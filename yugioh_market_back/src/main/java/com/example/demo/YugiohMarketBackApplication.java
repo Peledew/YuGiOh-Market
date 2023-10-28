@@ -7,8 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.demo.entity.Card;
 import com.example.demo.entity.CardSet;
+import com.example.demo.entity.Duelist;
 import com.example.demo.entity.MonsterCard;
 import com.example.demo.service.CardService;
+import com.example.demo.service.DuelistService;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,6 +20,9 @@ public class YugiohMarketBackApplication implements CommandLineRunner {
 
 	@Autowired
 	private CardService _cardServis;
+	
+	@Autowired
+	private DuelistService _duelistServis;
 	
 	@Override
 	public void run(String... args) throws Exception {
@@ -44,6 +49,13 @@ public class YugiohMarketBackApplication implements CommandLineRunner {
 		
 		
 		_cardServis.save(karta);
+		
+		Duelist kaiba = new Duelist();
+		kaiba.setName("Kaiba");
+		kaiba.setUsername("kaiba68");
+		kaiba.setCardCollection(karte);
+		
+		_duelistServis.save(kaiba);
 		
 	}
 	
