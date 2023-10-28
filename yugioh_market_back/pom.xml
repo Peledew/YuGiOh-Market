@@ -8,10 +8,10 @@
 		<version>3.1.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>baseGroup</groupId>
-	<artifactId>yugioh_market</artifactId>
+	<groupId>com.example</groupId>
+	<artifactId>yugioh_market_back</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>yugioh_market</name>
+	<name>yugioh_market_back</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>21</java.version>

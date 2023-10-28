@@ -1,14 +1,14 @@
-package basePackage;
+package com.example.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class YugiohMarketApplication {
+public class YugiohMarketBackApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(YugiohMarketApplication.class, args);
-		System.out.println("\n\nKOMPAJLIRAM SE!\n\n");
+		SpringApplication.run(YugiohMarketBackApplication.class, args);
+		System.out.println("\n\n KOMPAJLIRAJ MICKO!\n\n");
 	}
 
 }
