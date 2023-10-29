@@ -24,8 +24,15 @@ public class CardSet implements Serializable {
 	
 	//Constructors
 	public CardSet() {}
-
 	
+	public CardSet(String seriesMark, String seriesName, String seriesDescription, Set<Card> cards) {
+		super();
+		this.seriesMark = seriesMark;
+		this.seriesName = seriesName;
+		this.seriesDescription = seriesDescription;
+		this.cards = cards;
+	}
+
 	//Getters and Setters
 	public String getSeriesMark() {
 		return seriesMark;
@@ -58,7 +65,13 @@ public class CardSet implements Serializable {
 	public void setCards(Set<Card> cards) {
 		this.cards = cards;
 	}
-	
+
+	//Methods
+	@Override
+	public String toString() {
+		return "CardSet [seriesMark=" + seriesMark + ", seriesName=" + seriesName + ", seriesDescription="
+				+ seriesDescription + ", cards=" + cards + "]";
+	}
 	
 	
 }

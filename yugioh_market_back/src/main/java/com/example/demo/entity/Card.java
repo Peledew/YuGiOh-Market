@@ -38,6 +38,18 @@ public abstract class Card implements Serializable {
 	//Constructors
 	public Card() {}
 
+	public Card(String mark, String name, String description, String series, Set<CardSet> cardSets,
+			Set<Duelist> allDuelists) {
+		super();
+		this.mark = mark;
+		this.name = name;
+		this.description = description;
+		this.series = series;
+		this.cardSets = cardSets;
+		this.allDuelists = allDuelists;
+	}
+
+
 	//Getters and Setters
 	public String getMark() {
 		return mark;
@@ -86,8 +98,12 @@ public abstract class Card implements Serializable {
 	public void setAllDuelists(Set<Duelist> allDuelists) {
 		this.allDuelists = allDuelists;
 	}
-	
-	
-	
+
+	//Methods
+	@Override
+	public String toString() {
+		return "Card [mark=" + mark + ", name=" + name + ", description=" + description + ", series=" + series
+				+ ", cardSets=" + cardSets + ", allDuelists=" + allDuelists + "]";
+	}
 	
 }

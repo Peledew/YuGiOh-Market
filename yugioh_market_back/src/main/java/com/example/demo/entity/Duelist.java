@@ -29,14 +29,9 @@ public class Duelist implements Serializable {
 	@Column
 	private String password;
 	
-	@Column
-	private String country;
-	
-	@Column
-	private String city;
-	
-	@Column
-	private String adress;
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	@JoinColumn(name = "location_ID", referencedColumnName = "id")
+	private Location location;
 	
 	@Column
 	private double rating;
@@ -52,7 +47,20 @@ public class Duelist implements Serializable {
 	//Constructors
 	public Duelist() {}
 	
-	
+	public Duelist(int id, String name, String lastname, String username, String email, String password,
+			Location location, double rating, Set<Card> cardCollection) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.lastname = lastname;
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.location = location;
+		this.rating = rating;
+		this.cardCollection = cardCollection;
+	}
+
 	//Getters and Setters
 	public int getId() {
 		return id;
@@ -90,24 +98,7 @@ public class Duelist implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getCountry() {
-		return country;
-	}
-	public void setCountry(String country) {
-		this.country = country;
-	}
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
-	}
-	public String getAdress() {
-		return adress;
-	}
-	public void setAdress(String adress) {
-		this.adress = adress;
-	}
+
 	public double getRating() {
 		return rating;
 	}
@@ -121,10 +112,14 @@ public class Duelist implements Serializable {
 	public void setCardCollection(Set<Card> cardCollection) {
 		this.cardCollection = cardCollection;
 	}
+
+	//Methods
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", lastname=" + lastname + ", username=" + username + ", email="
-				+ email + ", password=" + password + ", country=" + country + ", city=" + city + ", adress=" + adress
-				+ ", rating=" + rating + "]";
+		return "Duelist [id=" + id + ", name=" + name + ", lastname=" + lastname + ", username=" + username + ", email="
+				+ email + ", password=" + password + ", location=" + location + ", rating=" + rating
+				+ ", cardCollection=" + cardCollection + "]";
 	}
+
+	
 }
