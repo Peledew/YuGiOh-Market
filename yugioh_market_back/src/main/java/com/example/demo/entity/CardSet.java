@@ -11,6 +11,10 @@ public class CardSet implements Serializable {
 
 	//Attributes
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+
+	@Column
 	private String seriesMark;
 	
 	@Column
@@ -18,22 +22,29 @@ public class CardSet implements Serializable {
 	
 	@Column
 	private String seriesDescription;
-	
-	@ManyToMany(mappedBy = "cardSets")
-    private Set<Card> cards = new HashSet<>();
-	
+
+	@OneToMany(mappedBy = "cardSet")
+	Set<CardPrints> prints;
+
 	//Constructors
 	public CardSet() {}
-	
-	public CardSet(String seriesMark, String seriesName, String seriesDescription, Set<Card> cards) {
-		super();
+
+	public CardSet(int id, String seriesMark, String seriesName, String seriesDescription, Set<CardPrints> prints) {
+		this.id = id;
 		this.seriesMark = seriesMark;
 		this.seriesName = seriesName;
 		this.seriesDescription = seriesDescription;
-		this.cards = cards;
+		this.prints = prints;
 	}
 
-	//Getters and Setters
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getSeriesMark() {
 		return seriesMark;
 	}
@@ -58,20 +69,11 @@ public class CardSet implements Serializable {
 		this.seriesDescription = seriesDescription;
 	}
 
-	public Set<Card> getCards() {
-		return cards;
+	public Set<CardPrints> getPrints() {
+		return prints;
 	}
 
-	public void setCards(Set<Card> cards) {
-		this.cards = cards;
+	public void setPrints(Set<CardPrints> prints) {
+		this.prints = prints;
 	}
-
-	//Methods
-	@Override
-	public String toString() {
-		return "CardSet [seriesMark=" + seriesMark + ", seriesName=" + seriesName + ", seriesDescription="
-				+ seriesDescription + ", cards=" + cards + "]";
-	}
-	
-	
 }

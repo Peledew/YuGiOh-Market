@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -13,50 +14,45 @@ public abstract class Card implements Serializable {
 
 	//Attributes
 	@Id
-	protected String mark;
-	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+
 	@Column
 	protected String name;
-	
+
 	@Column
 	protected String description;
-	
+
+	//TODO: meti da bude neki enum
 	@Column
-	protected String series;
-	
-	@ManyToMany
-    @JoinTable(
-        name = "card_set_finder",
-        joinColumns = @JoinColumn(name = "card_id"),
-        inverseJoinColumns = @JoinColumn(name = "cardset_id")
-    )
-	protected Set<CardSet> cardSets = new HashSet<>();
-	
-	@ManyToMany(mappedBy = "cardCollection")
-	protected Set<Duelist> allDuelists = new HashSet<>();
+	protected String rarity;
+
+	@OneToMany(mappedBy = "card")
+	Set<SellerBinder> binder;
+
+	@OneToMany(mappedBy = "card")
+	Set<CardPrints> prints;
+
+
 	
 	//Constructors
 	public Card() {}
 
-	public Card(String mark, String name, String description, String series, Set<CardSet> cardSets,
-			Set<Duelist> allDuelists) {
-		super();
-		this.mark = mark;
+	public Card(int id, String name, String description, String rarity, Set<SellerBinder> binder, Set<CardPrints> prints) {
+		this.id = id;
 		this.name = name;
 		this.description = description;
-		this.series = series;
-		this.cardSets = cardSets;
-		this.allDuelists = allDuelists;
+		this.rarity = rarity;
+		this.binder = binder;
+		this.prints = prints;
 	}
 
-
-	//Getters and Setters
-	public String getMark() {
-		return mark;
+	public int getId() {
+		return id;
 	}
 
-	public void setMark(String mark) {
-		this.mark = mark;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -75,35 +71,27 @@ public abstract class Card implements Serializable {
 		this.description = description;
 	}
 
-	public String getSeries() {
-		return series;
+	public String getRarity() {
+		return rarity;
 	}
 
-	public void setSeries(String series) {
-		this.series = series;
+	public void setRarity(String rarity) {
+		this.rarity = rarity;
 	}
 
-	public Set<CardSet> getCardSets() {
-		return cardSets;
+	public Set<SellerBinder> getBinder() {
+		return binder;
 	}
 
-	public void setCardSets(Set<CardSet> cardSets) {
-		this.cardSets = cardSets;
+	public void setBinder(Set<SellerBinder> binder) {
+		this.binder = binder;
 	}
 
-	public Set<Duelist> getAllDuelists() {
-		return allDuelists;
+	public Set<CardPrints> getPrints() {
+		return prints;
 	}
 
-	public void setAllDuelists(Set<Duelist> allDuelists) {
-		this.allDuelists = allDuelists;
+	public void setPrints(Set<CardPrints> prints) {
+		this.prints = prints;
 	}
-
-	//Methods
-	@Override
-	public String toString() {
-		return "Card [mark=" + mark + ", name=" + name + ", description=" + description + ", series=" + series
-				+ ", cardSets=" + cardSets + ", allDuelists=" + allDuelists + "]";
-	}
-	
 }
