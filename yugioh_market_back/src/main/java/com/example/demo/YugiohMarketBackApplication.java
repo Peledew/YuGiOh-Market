@@ -35,8 +35,8 @@ public class YugiohMarketBackApplication implements CommandLineRunner {
 		
 		CardSet setic = new CardSet();
 		//setic.setId("MAMA");
-		setic.setSeriesName("Duelist Nexus");
-		setic.setSeriesDescription("NEMAM");
+		setic.setName("Duelist Nexus");
+		setic.setDescription("NEMAM");
 		
 		Set<CardSet> setovi = new HashSet<>();
 		setovi.add(setic);

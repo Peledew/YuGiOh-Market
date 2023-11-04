@@ -1,5 +1,5 @@
 package com.example.demo.enumeration;
 
-public enum CardAttributesEnum {
+public enum CardAttribute {
 	DARK, DIVINE, EARTH, FIRE, LIGHT, WATER, WIND
 }

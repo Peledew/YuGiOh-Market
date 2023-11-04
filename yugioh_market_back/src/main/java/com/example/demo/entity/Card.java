@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.example.demo.enumeration.CardRarity;
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -20,12 +21,12 @@ public abstract class Card implements Serializable {
 	@Column
 	protected String name;
 
-	@Column
+	@Column(length = 500)
 	protected String description;
 
-	//TODO: meti da bude neki enum
 	@Column
-	protected String rarity;
+	@Enumerated(EnumType.STRING)
+	protected CardRarity rarity;
 
 	@OneToMany(mappedBy = "card")
 	Set<SellerBinder> binder;
@@ -33,12 +34,10 @@ public abstract class Card implements Serializable {
 	@OneToMany(mappedBy = "card")
 	Set<CardPrints> prints;
 
-
-	
 	//Constructors
 	public Card() {}
 
-	public Card(int id, String name, String description, String rarity, Set<SellerBinder> binder, Set<CardPrints> prints) {
+	public Card(int id, String name, String description, CardRarity rarity, Set<SellerBinder> binder, Set<CardPrints> prints) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
@@ -71,11 +70,11 @@ public abstract class Card implements Serializable {
 		this.description = description;
 	}
 
-	public String getRarity() {
+	public CardRarity getRarity() {
 		return rarity;
 	}
 
-	public void setRarity(String rarity) {
+	public void setRarity(CardRarity rarity) {
 		this.rarity = rarity;
 	}
 

@@ -1,7 +1,6 @@
 package com.example.demo.entity;
 
-import java.io.Serializable; 
-import java.util.HashSet;
+import java.io.Serializable;
 import java.util.Set;
 
 import jakarta.persistence.*;
@@ -15,13 +14,13 @@ public class CardSet implements Serializable {
 	private int id;
 
 	@Column
-	private String seriesMark;
+	private String mark;
 	
 	@Column
-	private String seriesName;
+	private String name;
 	
 	@Column
-	private String seriesDescription;
+	private String description;
 
 	@OneToMany(mappedBy = "cardSet")
 	Set<CardPrints> prints;
@@ -29,11 +28,11 @@ public class CardSet implements Serializable {
 	//Constructors
 	public CardSet() {}
 
-	public CardSet(int id, String seriesMark, String seriesName, String seriesDescription, Set<CardPrints> prints) {
+	public CardSet(int id, String mark, String name, String description, Set<CardPrints> prints) {
 		this.id = id;
-		this.seriesMark = seriesMark;
-		this.seriesName = seriesName;
-		this.seriesDescription = seriesDescription;
+		this.mark = mark;
+		this.name = name;
+		this.description = description;
 		this.prints = prints;
 	}
 
@@ -45,28 +44,28 @@ public class CardSet implements Serializable {
 		this.id = id;
 	}
 
-	public String getSeriesMark() {
-		return seriesMark;
+	public String getMark() {
+		return mark;
 	}
 
-	public void setSeriesMark(String seriesMark) {
-		this.seriesMark = seriesMark;
+	public void setMark(String seriesMark) {
+		this.mark = seriesMark;
 	}
 
-	public String getSeriesName() {
-		return seriesName;
+	public String getName() {
+		return name;
 	}
 
-	public void setSeriesName(String seriesName) {
-		this.seriesName = seriesName;
+	public void setName(String seriesName) {
+		this.name = seriesName;
 	}
 
-	public String getSeriesDescription() {
-		return seriesDescription;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setSeriesDescription(String seriesDescription) {
-		this.seriesDescription = seriesDescription;
+	public void setDescription(String seriesDescription) {
+		this.description = seriesDescription;
 	}
 
 	public Set<CardPrints> getPrints() {
