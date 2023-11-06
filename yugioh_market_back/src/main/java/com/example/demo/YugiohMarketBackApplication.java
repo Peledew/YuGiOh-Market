@@ -1,14 +1,11 @@
 package com.example.demo;
 
+import com.example.demo.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.demo.entity.Card;
-import com.example.demo.entity.CardSet;
-import com.example.demo.entity.Seller;
-import com.example.demo.entity.MonsterCard;
 import com.example.demo.service.CardService;
 import com.example.demo.service.DuelistService;
 
@@ -27,7 +24,10 @@ public class YugiohMarketBackApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println("\n\n KOMPAJLIRAJ MICKO!\n\n");
-		
+
+//		Duelist d = new Duelist();
+
+
 		Card karta = new MonsterCard();
 		//karta.setMark("DUDE-EN023");
 		karta.setName("Ra");

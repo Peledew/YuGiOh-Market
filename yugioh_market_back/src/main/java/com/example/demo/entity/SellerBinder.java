@@ -2,12 +2,20 @@ package com.example.demo.entity;
 
 import com.example.demo.EmbeddableClass.SellerBinderKey;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
 
 /*This class is used to track which cards seller has.
 Because of that I named class this way
 * */
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class SellerBinder implements Serializable {
     //Attributes
@@ -26,47 +34,4 @@ public class SellerBinder implements Serializable {
     @Column
     private int cardNumber;
 
-    //Constructors
-    public SellerBinder(){}
-
-    public SellerBinder(SellerBinderKey id, Seller seller, Card card, int cardNumber) {
-        this.id = id;
-        this.seller = seller;
-        this.card = card;
-        this.cardNumber = cardNumber;
-    }
-
-    //Getters and Setters
-
-    public SellerBinderKey getId() {
-        return id;
-    }
-
-    public void setId(SellerBinderKey id) {
-        this.id = id;
-    }
-
-    public Seller getSeller() {
-        return seller;
-    }
-
-    public void setSeller(Seller seller) {
-        this.seller = seller;
-    }
-
-    public Card getCard() {
-        return card;
-    }
-
-    public void setCard(Card card) {
-        this.card = card;
-    }
-
-    public int getCardNumber() {
-        return cardNumber;
-    }
-
-    public void setCardNumber(int cardNumber) {
-        this.cardNumber = cardNumber;
-    }
 }
